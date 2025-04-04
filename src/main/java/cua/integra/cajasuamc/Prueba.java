@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class Prueba {
     @GetMapping("/v1")
     public String v1() {
-        return "Pruebas desde rama development.";
+        return "Pruebas desde rama development para practica 6.";
     }
 }
