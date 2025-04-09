@@ -1,4 +1,4 @@
-package cua.integra.cajasuamc;
+package cua.integra.cajasuamc.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
