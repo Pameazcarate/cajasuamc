@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AlumnoRepository extends JpaRepository<Alumno, String> {
     Alumno findByMatricula(int matricula);
+
+    void deleteByMatricula(int matricula);
 }
