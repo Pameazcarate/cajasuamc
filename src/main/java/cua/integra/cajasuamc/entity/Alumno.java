@@ -13,6 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Alumno {
+    public int getMatricula;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
