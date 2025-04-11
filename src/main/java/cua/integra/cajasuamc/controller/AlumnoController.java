@@ -18,13 +18,13 @@ public class AlumnoController {
         this.alumnoService = alumnoService;
     }
 
-    @PostMapping
+    @PostMapping("/alumnos")
     public ResponseEntity<AlumnoDTO> createAlumno(@RequestBody AlumnoDTO alumnoDTO) {
         AlumnoDTO createdAlumno = alumnoService.createAlumno(alumnoDTO);
         return new ResponseEntity<>(createdAlumno, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("alumnos")
     public ResponseEntity<List<AlumnoDTO>> getAllAlumnos() {
         List<AlumnoDTO> alumnos = alumnoService.getAllAlumnos();
         if (alumnos.isEmpty()) {
@@ -51,12 +51,4 @@ public class AlumnoController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/{matricula}")
-    public ResponseEntity<Void> deleteAlumno(@PathVariable int matricula) {
-        boolean deleted = alumnoService.deleteAlumno(matricula);
-        if (deleted) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
 }
