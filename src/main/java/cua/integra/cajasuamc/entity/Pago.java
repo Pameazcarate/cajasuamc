@@ -1,12 +1,10 @@
 package cua.integra.cajasuamc.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -15,9 +13,21 @@ import java.util.Date;
 @Setter
 public class Pago {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false, unique = true)
-    private Date fechaPago;
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private String monto;
+    private Date fechaPago;
+
+    @Column(nullable = false)
+    private BigDecimal monto;
+
+    @ManyToOne
+    @JoinColumn(name = "alumno_id")
+    private Alumno alumno;
+
+    @ManyToOne
+    @JoinColumn(name = "caja_id")
+    private Caja caja;
 }
