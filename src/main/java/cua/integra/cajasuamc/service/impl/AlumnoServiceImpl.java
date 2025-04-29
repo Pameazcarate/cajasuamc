@@ -71,6 +71,7 @@ public class AlumnoServiceImpl implements AlumnoService {
         alumnoDTO.setMatricula(alumno.getMatricula());
         alumnoDTO.setNombre(alumno.getNombre());
         alumnoDTO.setApellidos(alumno.getApellidos());
+        alumnoDTO.setTelefono(alumno.getTelefono());
         return alumnoDTO;
     }
 
