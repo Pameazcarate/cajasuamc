@@ -1,14 +1,17 @@
 package cua.integra.cajasuamc.service;
 
 import cua.integra.cajasuamc.dto.AlumnoDTO;
+import cua.integra.cajasuamc.dto.CajasDTO;
 
 import java.util.List;
 
 public interface AlumnoService {
-    <Alummno> AlumnoDTO createAlumno(AlumnoDTO alumnoDTO);
+
+    AlumnoDTO createAlumno(AlumnoDTO alumno);
 
     List<AlumnoDTO> getAllAlumnos();
-    AlumnoDTO getUserByMatricula(int matricula);
-    AlumnoDTO updateAlumno(int matricula,AlumnoDTO alumno);
-    boolean deleteAlumno(int matricula);
+
+    AlumnoDTO getAlumnoByMatricula(int matricula);
+
+    AlumnoDTO updateAlumno(int matricula, AlumnoDTO alumnoDTO);
 }

@@ -4,9 +4,10 @@ import cua.integra.cajasuamc.entity.Alumno;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface AlumnoRepository extends JpaRepository<Alumno, String> {
-    Alumno findByMatricula(int matricula);
+import java.util.Optional;
 
-    void deleteByMatricula(int matricula);
+@Repository
+public interface AlumnoRepository extends JpaRepository<Alumno, Integer> {
+
+    Alumno findByMatricula(int matricula);
 }
