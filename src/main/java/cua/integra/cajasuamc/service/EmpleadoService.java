@@ -1,9 +1,13 @@
 package cua.integra.cajasuamc.service;
 
+import cua.integra.cajasuamc.dto.EmpleadoDTO;
+
+import java.util.List;
+
 public interface EmpleadoService {
-    ClienteDTO save(ClienteDTO clienteDTO);
-    List<ClienteDTO> findAll();
-    Optional<ClienteDTO> findById(Long id);
-    void update(long id, ClienteDTO clienteDTO);
-    void deleteById(long id);
+    EmpleadoDTO createEmpleado(EmpleadoDTO empleadoDTO);
+    List<EmpleadoDTO> getAllEmpleados();
+    List<EmpleadoDTO> getAllAlumnos();
+    EmpleadoDTO getEmpleadoBynumeroEmpleado(long numeroEmpleado);
+    EmpleadoDTO updateEmpleado(long numeroEmpleado, EmpleadoDTO empleadoDTO);
 }

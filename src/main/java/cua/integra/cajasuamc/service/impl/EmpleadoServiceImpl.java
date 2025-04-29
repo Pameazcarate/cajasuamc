@@ -1,49 +1,73 @@
 package cua.integra.cajasuamc.service.impl;
 
+import cua.integra.cajasuamc.dto.EmpleadoDTO;
+import cua.integra.cajasuamc.entities.Empleado;
+import cua.integra.cajasuamc.repository.EmpleadoRepository;
 import cua.integra.cajasuamc.service.EmpleadoService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
-public class EmpleadoServiceImpl implements EmpleadoService {
-    private IClienteMapper clienteMapper;
-    private IClienteRepository clienteRepository;
+public abstract class EmpleadoServiceImpl implements EmpleadoService {
+    private final EmpleadoRepository empleadoRepository;
 
-    public ClienteServiceImpl(IClienteMapper clienteMapper, IClienteRepository clienteRepository) {
-        this.clienteMapper = clienteMapper;
-        this.clienteRepository = clienteRepository;
+    public EmpleadoServiceImpl(EmpleadoRepository empleadoRepository) {
+        this.empleadoRepository = empleadoRepository;
     }
 
     @Override
-    public ClienteDTO save(ClienteDTO clienteDTO) {
-        Cliente cliente = clienteMapper.toEntity(clienteDTO);
-        Cliente clienteRegresado = clienteRepository.save(cliente);
-        ClienteDTO clienteDTORegresado = clienteMapper.toDTO(clienteRegresado);
+    public EmpleadoDTO createEmpleado(EmpleadoDTO empleadoDTO) {
+        Empleado empleado = new Empleado();
 
-        return clienteDTORegresado;
+        empleado.setNumeroEmpleado(empleadoDTO.getNumeroEmpleado());
+        empleado.setNombre(empleadoDTO.getNombre());
+        empleado.setApellidos(empleadoDTO.getApellidos());
+        empleado.setTelefono(String.valueOf(empleadoDTO.getTelefono()));
+
+        Empleado savedEmpleado = empleadoRepository.save(empleado);
+
+        empleadoDTO.setNumeroEmpleado(savedEmpleado.getNumeroEmpleado());
+        return empleadoDTO;
     }
 
     @Override
-    public List<ClienteDTO> findAll() {
-        List<Cliente> clientes = clienteRepository.findAll();
-        List<ClienteDTO> clienteDTOs = new ArrayList<>();
-        for (Cliente c : clientes) {
-            clienteDTOs.add(clienteMapper.toDTO(c));
+    public List<EmpleadoDTO> getAllAlumnos() {
+        List<Empleado> empleados = empleadoRepository.findAll();
+        return empleados.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public EmpleadoDTO getEmpleadoBynumeroEmpleado(long numeroEmpleado) {
+        Empleado empleado = empleadoRepository.findBynumeroEmpleado(numeroEmpleado);
+        if (empleado != null) {
+            return convertToDTO(empleado);
         }
-        return clienteDTOs;
-    }
-
-    @Override
-    public Optional<ClienteDTO> findById(Long id) {
         return null;
     }
 
     @Override
-    public void deleteById(long id) {
+    public EmpleadoDTO updateEmpleado(long numeroEmpleado, EmpleadoDTO empleadoDTO){
+        Empleado empleado1 = empleadoRepository.findBynumeroEmpleado(numeroEmpleado);
+        if (empleado1 != null) {
+            empleado1.setNombre(empleadoDTO.getNombre());
+            empleado1.setApellidos(empleadoDTO.getApellidos());
+            empleado1.setTelefono(String.valueOf(empleadoDTO.getTelefono()));
 
+            Empleado updatedEmpleado = empleadoRepository.save(empleado1);
+            return convertToDTO(updatedEmpleado);
+        }
+        return null;
     }
 
-    @Override
-    public void update(long id, ClienteDTO clienteDTO) {
-
+    private EmpleadoDTO convertToDTO(Empleado empleado) {
+        EmpleadoDTO empleadoDTO = new EmpleadoDTO();
+        empleadoDTO.setNumeroEmpleado(empleado.getNumeroEmpleado());
+        empleadoDTO.setNombre(empleado.getNombre());
+        empleadoDTO.setApellidos(empleado.getApellidos());
+        return empleadoDTO;
     }
 }

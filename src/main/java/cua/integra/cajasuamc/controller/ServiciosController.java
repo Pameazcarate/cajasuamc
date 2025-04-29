@@ -4,11 +4,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Table(name = "servicios")
 @Setter
+@Getter
 public class ServiciosController {
 
     @Id
@@ -16,14 +18,5 @@ public class ServiciosController {
     @Column(nullable = false, unique = true)
     private String nombreServicio;
     @Column(nullable = false)
-    private String costo;
-    @Column(nullable = false)
-
-    public void setIdServicio(Long idServicio) {
-        this.idServicio = idServicio;
-    }
-
-    public Long getIdServicio() {
-        return idServicio;
-    }
+    private float costo;
 }

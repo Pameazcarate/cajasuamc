@@ -12,7 +12,7 @@ import lombok.Setter;
 public class Servicios {
     @Id
     private long idServicio;
-    @Column(nullable = false)
+    @(nullable = false)
     private String recuperacion;
     @Column(nullable = false)
     private String constancia;
