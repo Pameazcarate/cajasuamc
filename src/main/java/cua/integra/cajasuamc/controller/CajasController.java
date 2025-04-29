@@ -17,17 +17,17 @@ public class CajasController{
         this.cajaService = cajaService;
     }
 
-    @PostMapping("/cajas")
+    @PostMapping("/caja")
     public CajasDTO createCaja(@RequestBody CajasDTO cajasDTO){
         return cajaService.createCaja(cajasDTO);
     }
 
-    @GetMapping("/cajas")
+    @GetMapping("/caja")
     public List<Object> getAllCajas(){
         return cajaService.getAllCajas();
     }
 
-    @GetMapping("/cajas/{id}")
+    @GetMapping("/caja/{id}")
     public ResponseEntity<CajasDTO> getCajasById(@PathVariable int id) {
         CajasDTO cajasDTO = cajaService.getCajasById(id);
         if (cajasDTO != null) {
@@ -37,7 +37,7 @@ public class CajasController{
     }
 
 
-    @PutMapping("cajas/{id}")
+    @PutMapping("caja/{id}")
     public ResponseEntity<CajasDTO> updateCaja(@PathVariable int id, @RequestBody CajasDTO cajasDTO) {
         CajasDTO updateCaja = cajaService.updateCaja(id, cajasDTO);
         if (updateCaja != null) {
