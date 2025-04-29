@@ -1,4 +1,4 @@
 package cua.integra.cajasuamc.dto;
 
-public class servicioDTO {
+public class ServicioDTO {
 }

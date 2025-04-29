@@ -1,4 +1,4 @@
 package cua.integra.cajasuamc.service.impl;
 
-public class BoletoTransporteServiceImpl {
+public class EmpleadoServiceImpl {
 }
