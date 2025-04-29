@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/alumnos")
+@RequestMapping("/v1")
 public class AlumnoController {
 
     private final AlumnoService alumnoService;
@@ -24,8 +24,8 @@ public class AlumnoController {
         return new ResponseEntity<>(createdAlumno, HttpStatus.CREATED);
     }
 
-    @GetMapping("alumnos")
-    public ResponseEntity<List<AlumnoDTO>> getAllAlumnos() {
+    @GetMapping("/alumnos")
+    public ResponseEntity<List<AlumnoDTO>> getAll() {
         List<AlumnoDTO> alumnos = alumnoService.getAllAlumnos();
         if (alumnos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -33,16 +33,16 @@ public class AlumnoController {
         return new ResponseEntity<>(alumnos, HttpStatus.OK);
     }
 
-    @GetMapping("/{matricula}")
-    public ResponseEntity<AlumnoDTO> getAlumnoByMatricula(@PathVariable int matricula) {
-        AlumnoDTO alumno = alumnoService.getUserByMatricula(matricula);
+    @GetMapping("/alumnos/{matricula}")
+    public ResponseEntity<AlumnoDTO> findAlumnoByMatricula(@PathVariable int matricula) {
+        AlumnoDTO alumno = alumnoService.getAlumnoByMatricula(matricula);
         if (alumno != null) {
             return new ResponseEntity<>(alumno, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/{matricula}")
+    @PutMapping("/alumnos/{matricula}")
     public ResponseEntity<AlumnoDTO> updateAlumno(@PathVariable int matricula, @RequestBody AlumnoDTO alumnoDTO) {
         AlumnoDTO updatedAlumno = alumnoService.updateAlumno(matricula, alumnoDTO);
         if (updatedAlumno != null) {
