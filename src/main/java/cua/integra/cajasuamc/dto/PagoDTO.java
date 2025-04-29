@@ -9,5 +9,5 @@ public class PagoDTO {
     private BigDecimal monto;
     private Long alumnoId;
     private Long cajaId;
-
+    private Long servicioId;
 }
