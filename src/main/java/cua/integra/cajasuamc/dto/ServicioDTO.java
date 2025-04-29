@@ -5,9 +5,6 @@ import lombok.Data;
 @Data
 public class ServicioDTO {
     private int idServicio;
-    private String recuperación;
-    private String constancia;
-    private String reposiciónCredencial;
-    private String multaBiblioteca;
-    private String boletoTransporte;
+    private String nombreServicio;
+    private float costo;
 }
