@@ -1,49 +1,51 @@
 package cua.integra.cajasuamc.controller;
 
-import cua.integra.cajasuamc.dto.ServicioDTO;
-import cua.integra.cajasuamc.service.ServicioService;
+import cua.integra.cajasuamc.dto.EmpleadoDTO;
+import cua.integra.cajasuamc.service.EmpleadoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/v1")
-public class ServicioController {
-    private final ServicioService servicioService;
+public class EmpleadoController {
+    private final EmpleadoService empleadoService;
 
-    public ServicioController(ServicioService servicioService) {
-        this.servicioService = servicioService;
-    }
-    @PostMapping("/servicios")
-    public ResponseEntity<ServicioDTO> createServicio(@RequestBody ServicioDTO servicioDTO) {
-        ServicioDTO createdServicio = servicioService.createServicio(servicioDTO);
-        return new ResponseEntity<>(createdServicio, HttpStatus.CREATED);
+    public EmpleadoController(EmpleadoService empleadoService) {
+        this.empleadoService = empleadoService;
     }
 
-    @GetMapping("/servicios")
-    public ResponseEntity<List<ServicioDTO>> getAll() {
-        List<ServicioDTO> servicios = servicioService.getAllServicios();
-        if (servicios.isEmpty()) {
+    @PostMapping("/empleados")
+    public ResponseEntity<EmpleadoDTO> createEmpleado(@RequestBody EmpleadoDTO empleadoDTO) {
+        EmpleadoDTO createdEmpleado = empleadoService.createEmpleado(empleadoDTO);
+        return new ResponseEntity<>(createdEmpleado, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/empleados")
+    public ResponseEntity<List<EmpleadoDTO>> getAll() {
+        List<EmpleadoDTO> empleados = empleadoService.getAllEmpleados();
+        if (empleados.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(servicios, HttpStatus.OK);
+        return new ResponseEntity<>(empleados, HttpStatus.OK);
     }
 
-    @GetMapping("/servicios/{idServicio}")
-    public ResponseEntity<ServicioDTO> findServicioByIdServicio(@PathVariable long idServicio) {
-        ServicioDTO servicio = servicioService.getServicioByIdServicio(idServicio);
-        if (servicio != null) {
-            return new ResponseEntity<>(servicio, HttpStatus.OK);
+    @GetMapping("/empleados/{numeroEmpleado}")
+    public ResponseEntity<EmpleadoDTO> findEmpleadoBynumeroEmpleado(@PathVariable long numeroEmpleado) {
+        EmpleadoDTO empleado = empleadoService.getEmpleadoBynumeroEmpleado(numeroEmpleado);
+        if (empleado != null) {
+            return new ResponseEntity<>(empleado, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/servicios/{idServicio}")
-    public ResponseEntity<ServicioDTO> updateServicio(@PathVariable long idServicio, @RequestBody ServicioDTO servicioDTO) {
-        ServicioDTO updatedServicio = servicioService.updateServicio(idServicio, servicioDTO);
-        if (updatedServicio != null) {
-            return new ResponseEntity<>(updatedServicio, HttpStatus.OK);
+    @PutMapping("/empleados/{numeroEmpleado}")
+    public ResponseEntity<EmpleadoDTO> updateEmpleado(@PathVariable long numeroEmpleado, @RequestBody EmpleadoDTO empleadoDTO) {
+        EmpleadoDTO updatedEmpleado = empleadoService.updateEmpleado(numeroEmpleado, empleadoDTO);
+        if (updatedEmpleado != null) {
+            return new ResponseEntity<>(updatedEmpleado, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
