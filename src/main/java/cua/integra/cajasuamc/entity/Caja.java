@@ -21,7 +21,7 @@ public class Caja {
     private long id;
     @Column(nullable = false, unique = true)
     private String numero_ventanilla;
-    @OneToMany(mappedBy = "pago")
+    @OneToMany(mappedBy = "caja")
     @ToString.Exclude
     private List<Pago> pagos;
 }

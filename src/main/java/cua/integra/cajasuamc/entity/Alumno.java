@@ -31,7 +31,7 @@ public class Alumno {
     @Column(nullable = false)
     private String telefono;
 
-    @OneToMany(mappedBy = "pago")
+    @OneToMany(mappedBy = "alumno")
     @ToString.Exclude
     private List<Pago> pagos;
 }
