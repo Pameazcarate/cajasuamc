@@ -13,21 +13,6 @@ import java.util.List;
 public class EmpleadoController {
     private final EmpleadoService empleadoService;
 
-    @GetMapping("/user")
-    public String user() {
-        return "Ruta para los usuarios (USER)";
-    }
-
-    @GetMapping("/admin")
-    public String admin() {
-        return "Ruta para los administradores (ADMIN)";
-    }
-
-    @GetMapping("/all")
-    public String all() {
-        return "Ruta pública para todos los roles (ALL)";
-    }
-
     public EmpleadoController(EmpleadoService empleadoService) {
         this.empleadoService = empleadoService;
     }
