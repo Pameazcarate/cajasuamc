@@ -4,9 +4,11 @@ import cua.integra.cajasuamc.dto.PagoDTO;
 import cua.integra.cajasuamc.entity.Alumno;
 import cua.integra.cajasuamc.entity.Caja;
 import cua.integra.cajasuamc.entity.Pago;
+import cua.integra.cajasuamc.entity.Servicio;
 import cua.integra.cajasuamc.repository.AlumnoRepository;
 import cua.integra.cajasuamc.repository.CajaRepository;
 import cua.integra.cajasuamc.repository.PagoRepository;
+import cua.integra.cajasuamc.repository.ServicioRepository;
 import cua.integra.cajasuamc.service.PagoService;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +23,13 @@ public class PagoServiceImpl implements PagoService {
     private final PagoRepository pagoRepository;
     private final AlumnoRepository alumnoRepository;
     private final CajaRepository cajaRepository;
+    private final ServicioRepository servicioRepository;
 
-    public PagoServiceImpl(PagoRepository pagoRepository, AlumnoRepository alumnoRepository, CajaRepository cajaRepository) {
+    public PagoServiceImpl(PagoRepository pagoRepository, AlumnoRepository alumnoRepository, CajaRepository cajaRepository, ServicioRepository servicioRepository) {
         this.pagoRepository = pagoRepository;
         this.alumnoRepository = alumnoRepository;
         this.cajaRepository = cajaRepository;
+        this.servicioRepository = servicioRepository;
     }
 
     @Override
@@ -36,10 +40,12 @@ public class PagoServiceImpl implements PagoService {
 
         Alumno alumno = alumnoRepository.findById(pagoDTO.getAlumnoId()).orElse(null);
         Caja caja = cajaRepository.findById(pagoDTO.getCajaId()).orElse(null);
+        Servicio servicio = servicioRepository.findByIdServicio(pagoDTO.getServicioId()).orElse(null);
 
         if (alumno != null && caja != null) {
             pago.setAlumno(alumno);
             pago.setCaja(caja);
+            pago.setServicio(servicio);
             Pago savedPago = pagoRepository.save(pago);
             return convertToDTO(savedPago);
         }
@@ -87,6 +93,9 @@ public class PagoServiceImpl implements PagoService {
 
         if (pago.getCaja() != null) {
             dto.setCajaId(pago.getCaja().getId());
+        }
+        if (pago.getServicio() != null) {
+            dto.setServicioId(pago.getServicio().getIdServicio());
         }
 
         return dto;

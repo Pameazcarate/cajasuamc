@@ -31,6 +31,6 @@ import java.util.List;
         private Caja caja;
 
         @ManyToOne
-        @JoinColumn(name = "servicio_idservicio")
-        private Servicio servicio;;
+        @JoinColumn(name = "servicio_id")
+        private Servicio servicio;
     }
