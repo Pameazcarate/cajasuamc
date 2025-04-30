@@ -32,7 +32,7 @@ public class PagoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PagoDTO> getPagoById(@PathVariable int id) {
+    public ResponseEntity<PagoDTO> getPagoById(@PathVariable long id) {
         PagoDTO pago = pagoService.getPagoById(id);
         if (pago != null) {
             return new ResponseEntity<>(pago, HttpStatus.OK);
@@ -41,7 +41,7 @@ public class PagoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePago(@PathVariable int id) {
+    public ResponseEntity<Void> deletePago(@PathVariable long id) {
         boolean deleted = pagoService.deletePagoById(id);
         if (deleted) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -49,16 +49,5 @@ public class PagoController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/alumno/{alumnoId}")
-    public ResponseEntity<List<PagoDTO>> getPagosByAlumno(@PathVariable Long alumnoId) {
-        List<PagoDTO> pagos = pagoService.getPagosByAlumnoId(alumnoId);
-        return pagos.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(pagos);
-    }
-
-    @GetMapping("/rango-fechas")
-    public ResponseEntity<List<PagoDTO>> getPagosPorRangoFechas(@RequestParam Date inicio, @RequestParam Date fin) {
-        List<PagoDTO> pagos = pagoService.getPagosByFechaPagoBetween(inicio, fin);
-        return pagos.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(pagos);
-    }
 
 }

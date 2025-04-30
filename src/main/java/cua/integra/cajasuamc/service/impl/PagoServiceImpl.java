@@ -5,23 +5,23 @@ import cua.integra.cajasuamc.entity.Alumno;
 import cua.integra.cajasuamc.entity.Caja;
 import cua.integra.cajasuamc.entity.Pago;
 import cua.integra.cajasuamc.repository.AlumnoRepository;
+import cua.integra.cajasuamc.repository.CajaRepository;
 import cua.integra.cajasuamc.repository.PagoRepository;
 import cua.integra.cajasuamc.service.PagoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PagoServiceImpl {
+public class PagoServiceImpl implements PagoService {
 
     private final PagoRepository pagoRepository;
     private final AlumnoRepository alumnoRepository;
     private final CajaRepository cajaRepository;
 
-    @Autowired
     public PagoServiceImpl(PagoRepository pagoRepository, AlumnoRepository alumnoRepository, CajaRepository cajaRepository) {
         this.pagoRepository = pagoRepository;
         this.alumnoRepository = alumnoRepository;
@@ -29,67 +29,67 @@ public class PagoServiceImpl {
     }
 
     @Override
-    public PagoDTO createPago(PagoDTO pagoDTO){
-        Pago pago = toEntity(pagoDTO);
+    public PagoDTO createPago(PagoDTO pagoDTO) {
+        Pago pago = new Pago();
         pago.setFechaPago(new Date());
+        pago.setMonto(pagoDTO.getMonto().toString());
 
-        Alumno alumno = alumnoRepository.findById(String.valueOf(pagoDTO.getAlumnoId())).orElse(null);
+        Alumno alumno = alumnoRepository.findById(pagoDTO.getAlumnoId()).orElse(null);
         Caja caja = cajaRepository.findById(pagoDTO.getCajaId()).orElse(null);
 
-        if (alumno != null && caja != null){
+        if (alumno != null && caja != null) {
             pago.setAlumno(alumno);
             pago.setCaja(caja);
             Pago savedPago = pagoRepository.save(pago);
-            return toDTO(savedPago);
+            return convertToDTO(savedPago);
         }
 
         return null;
-
     }
 
     @Override
-    public List<PagoDTO> getAllPagos(){
+    public List<PagoDTO> getAllPagos() {
         List<Pago> pagos = pagoRepository.findAll();
         return pagos.stream()
-                .map(this::toDTO)
+                .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public PagoDTO getPagoById(long id){
-        return pagoRepository.findById((long) id)
-                .map(this::toDTO)
+    public PagoDTO getPagoById(Long id) {
+        return pagoRepository.findById(id)
+                .map(this::convertToDTO)
                 .orElse(null);
     }
 
     @Override
-    public boolean deletePagoById(int id){
-        try{
-            pagoRepository.deleteById((long)id);
+    public boolean deletePagoById(Long id) {
+        try {
+            pagoRepository.deleteById(id);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
-    private PagoDTO toDTO(Pago pago){
+    private PagoDTO convertToDTO(Pago pago) {
         PagoDTO dto = new PagoDTO();
         dto.setId(pago.getId());
         dto.setFechaPago(pago.getFechaPago());
-        dto.setMonto(pago.getMonto());
-        dto.setAlumnoId(pago.getAlumno().getId());
-        dto.getCajaId(pago.getCaja().getId());
+
+        if (pago.getMonto() != null) {
+            dto.setMonto(new BigDecimal(pago.getMonto()));
+        }
+
+        if (pago.getAlumno() != null) {
+            dto.setAlumnoId(pago.getAlumno().getId());
+        }
+
+        if (pago.getCaja() != null) {
+            dto.setCajaId(pago.getCaja().getId());
+        }
+
         return dto;
     }
-
-    private Pago toEntity(PagoDTO dto) {
-        Pago pago = new Pago();
-        pago.setId(dto.getId());
-        pago.setFechaPago(dto.getFechaPago());
-        pago.setMonto(dto.getMonto());
-        return pago;
-    }
-
-
 
 }

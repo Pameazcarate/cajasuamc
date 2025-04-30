@@ -13,16 +13,4 @@ public interface PagoRepository extends JpaRepository<Pago, Long> {
 
     Pago findById(long id);
 
-    void deleteById(long id);
-
-    Caja findById(long id);
-
-
-
-    List<Pago> findByAlumnoId(Long alumnoId);
-    List<Pago> findByCajaId(Long cajaId);
-    List<Pago> findByFechaPago(Date fechaPago);
-    List<Pago> findByFechaPagoBetween(Date inicio, Date fin);
-    List<Pago> findByServicioId(Long servicioId);
-
 }
