@@ -15,13 +15,17 @@ import java.util.List;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
-        @Column(nullable = false, unique = true)
+
+        @Column(nullable = false)
         private Date fechaPago;
+
         @Column(nullable = false)
         private String monto;
+
         @ManyToOne
         @JoinColumn(name = "alumno_id")
         private Alumno alumno;
+
         @ManyToOne
         @JoinColumn(name = "caja_id")
         private Caja caja;

@@ -16,6 +16,10 @@ public class PagoController {
 
     private final PagoService pagoService;
 
+    public PagoController(PagoService pagoService) {
+        this.pagoService = pagoService;
+    }
+
     @PostMapping("/pagos")
     public ResponseEntity<PagoDTO> createPago(@RequestBody PagoDTO pagoDTO) {
         PagoDTO createdPago = pagoService.createPago(pagoDTO);
