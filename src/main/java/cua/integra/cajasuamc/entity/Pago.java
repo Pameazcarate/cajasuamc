@@ -29,4 +29,8 @@ import java.util.List;
         @ManyToOne
         @JoinColumn(name = "caja_id")
         private Caja caja;
+
+        @ManyToOne
+        @JoinColumn(name = "servicio_id")
+        private Servicio servicio;
         }
