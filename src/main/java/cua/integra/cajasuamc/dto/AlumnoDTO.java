@@ -15,10 +15,10 @@ import lombok.ToString;
 public class AlumnoDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(nullable = false, unique = true)
-    private int matricula;
+    private long matricula;
 
     @Column(nullable = false)
     private String nombre;

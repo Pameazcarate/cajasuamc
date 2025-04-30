@@ -46,7 +46,7 @@ public class CajaServiceImpl implements CajaService {
     }
 
     @Override
-    public CajasDTO getCajasById(int id) {
+    public CajasDTO getCajasById(long id) {
         Caja caja = cajaRepository.findById(id);
         if (caja != null) {
             return (CajasDTO) convertToDTO(caja);
@@ -55,7 +55,7 @@ public class CajaServiceImpl implements CajaService {
     }
 
     @Override
-    public CajasDTO updateCaja(int id, CajasDTO cajasDTO) {
+    public CajasDTO updateCaja(long id, CajasDTO cajasDTO) {
         Caja cajaE = cajaRepository.findById(id);
         if (cajaE != null) {
             cajaE.setId(cajasDTO.getId());

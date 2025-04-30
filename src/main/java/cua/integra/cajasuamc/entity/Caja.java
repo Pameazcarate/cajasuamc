@@ -18,7 +18,7 @@ import java.util.Set;
 public class Caja {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @Column(nullable = false, unique = true)
     private String numero_ventanilla;
     @OneToMany(mappedBy = "pago")

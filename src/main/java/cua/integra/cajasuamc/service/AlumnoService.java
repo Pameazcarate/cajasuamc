@@ -11,7 +11,7 @@ public interface AlumnoService {
 
     List<AlumnoDTO> getAllAlumnos();
 
-    AlumnoDTO getAlumnoByMatricula(int matricula);
+    AlumnoDTO getAlumnoByMatricula(long matricula);
 
-    AlumnoDTO updateAlumno(int matricula, AlumnoDTO alumnoDTO);
+    AlumnoDTO updateAlumno(long matricula, AlumnoDTO alumnoDTO);
 }

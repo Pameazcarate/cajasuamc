@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CajaRepository extends JpaRepository<Caja, String> {
+public interface CajaRepository extends JpaRepository<Caja, Long> {
     Caja save(Caja caja);
-    Caja findById(int id);
+    Caja findById(long id);
 }

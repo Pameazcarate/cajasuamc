@@ -9,7 +9,7 @@ public interface CajaService {
 
     List<Object> getAllCajas();
 
-    CajasDTO getCajasById(int id);
+    CajasDTO getCajasById(long id);
 
-    CajasDTO updateCaja(int id, CajasDTO cajasDTO);
+    CajasDTO updateCaja(long id, CajasDTO cajasDTO);
 }
