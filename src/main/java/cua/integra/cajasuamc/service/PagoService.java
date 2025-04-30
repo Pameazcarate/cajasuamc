@@ -2,13 +2,17 @@ package cua.integra.cajasuamc.service;
 
 import cua.integra.cajasuamc.dto.PagoDTO;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 public interface PagoService {
-   <Pago> PagoDTO createPago(PagoDTO pagoDTO);
+
+   PagoDTO createPago(PagoDTO pagoDTO);
+
    List<PagoDTO> getAllPagos();
-   PagoDTO getPagoById(int id);
-   boolean deletePagoById(int id);
+   PagoDTO getPagoById(Long id);
+   boolean deletePagoById(Long id);
 
 
 }
