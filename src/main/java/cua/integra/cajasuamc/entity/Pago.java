@@ -6,32 +6,25 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
-@Entity
-@Table(name = "Pago")
-@Getter
-@Setter
-public class Pago {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Entity
+    @Table(name = "pago")
+    @Getter
+    @Setter
+    public class Pago {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private long id;
+        @Column(nullable = false, unique = true)
+        private Date fechaPago;
+        @Column(nullable = false)
+        private String monto;
+        @ManyToOne
+        @JoinColumn(name = "alumno_id")
+        private Alumno alumno;
+        @ManyToOne
+        @JoinColumn(name = "caja_id")
+        private Caja caja;
+     }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
-    private Date fechaPago;
-
-    @Column(nullable = false)
-    private BigDecimal monto;
-
-    @ManyToOne
-    @JoinColumn(name = "alumno_id")
-    private Alumno alumno;
-
-    @ManyToOne
-    @JoinColumn(name = "caja_id")
-    private Caja caja;
-
-    @ManyToOne
-    @JoinColumn(name = "servicio_id")
-    private Servicio servicio;
-}
