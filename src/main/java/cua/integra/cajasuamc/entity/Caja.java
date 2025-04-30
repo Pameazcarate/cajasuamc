@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name="caja")
 @Setter
@@ -18,4 +21,7 @@ public class Caja {
     private int id;
     @Column(nullable = false, unique = true)
     private String numero_ventanilla;
+    @OneToMany(mappedBy = "pago")
+    @ToString.Exclude
+    private List<Pago> pagos;
 }

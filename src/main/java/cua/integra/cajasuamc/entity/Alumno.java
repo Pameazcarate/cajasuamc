@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Table(name="alumno")
 @Setter
@@ -28,4 +30,8 @@ public class Alumno {
 
     @Column(nullable = false)
     private String telefono;
+
+    @OneToMany(mappedBy = "pago")
+    @ToString.Exclude
+    private List<Pago> pagos;
 }
