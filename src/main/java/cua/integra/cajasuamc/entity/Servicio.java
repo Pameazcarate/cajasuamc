@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Table(name = "servicios")
 @Setter
@@ -48,4 +50,6 @@ public class Servicio {
     public void setCosto(String costo) {
         this.costo = costo;
     }
+
+
 }

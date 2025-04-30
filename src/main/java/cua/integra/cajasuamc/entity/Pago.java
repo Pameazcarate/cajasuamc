@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
     @Entity
-    @Table(name = "pago")
+    @Table(name = "pagos")
     @Getter
     @Setter
     public class Pago {
@@ -31,6 +31,6 @@ import java.util.List;
         private Caja caja;
 
         @ManyToOne
-        @JoinColumn(name = "servicio_id")
-        private Servicio servicio;
-        }
+        @JoinColumn(name = "servicio_idservicio")
+        private Servicio servicio;;
+    }
