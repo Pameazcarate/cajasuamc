@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/pagos")
 public class PagoController {
 
     private final PagoService pagoService;
@@ -35,7 +35,7 @@ public class PagoController {
         return new ResponseEntity<>(pagos, HttpStatus.OK);
     }
 
-    @GetMapping("pagos/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<PagoDTO> getPagoById(@PathVariable long id) {
         PagoDTO pago = pagoService.getPagoById(id);
         if (pago != null) {
@@ -44,7 +44,7 @@ public class PagoController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("pagos/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePago(@PathVariable long id) {
         boolean deleted = pagoService.deletePagoById(id);
         if (deleted) {

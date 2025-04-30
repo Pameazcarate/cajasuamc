@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public abstract class EmpleadoServiceImpl implements EmpleadoService {
+public class EmpleadoServiceImpl implements EmpleadoService {
     private final EmpleadoRepository empleadoRepository;
 
     public EmpleadoServiceImpl(EmpleadoRepository empleadoRepository) {
