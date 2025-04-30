@@ -35,7 +35,11 @@ public class PagoController {
         return new ResponseEntity<>(pagos, HttpStatus.OK);
     }
 
+<<<<<<< Updated upstream
     @GetMapping("/{id}")
+=======
+    @GetMapping("/pagos/{id}")
+>>>>>>> Stashed changes
     public ResponseEntity<PagoDTO> getPagoById(@PathVariable long id) {
         PagoDTO pago = pagoService.getPagoById(id);
         if (pago != null) {
@@ -44,7 +48,11 @@ public class PagoController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+<<<<<<< Updated upstream
     @DeleteMapping("/{id}")
+=======
+    @DeleteMapping("/pagos/{id}")
+>>>>>>> Stashed changes
     public ResponseEntity<Void> deletePago(@PathVariable long id) {
         boolean deleted = pagoService.deletePagoById(id);
         if (deleted) {
