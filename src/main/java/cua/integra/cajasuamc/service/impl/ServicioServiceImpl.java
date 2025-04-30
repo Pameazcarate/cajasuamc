@@ -4,10 +4,12 @@ import cua.integra.cajasuamc.dto.ServicioDTO;
 import cua.integra.cajasuamc.entity.Servicio;
 import cua.integra.cajasuamc.repository.ServicioRepository;
 import cua.integra.cajasuamc.service.ServicioService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class ServicioServiceImpl implements ServicioService {
     private final ServicioRepository servicioRepository;
 
