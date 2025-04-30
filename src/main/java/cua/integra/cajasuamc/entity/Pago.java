@@ -25,4 +25,4 @@ import java.util.List;
         @ManyToOne
         @JoinColumn(name = "caja_id")
         private Caja caja;
-    }
+        }
