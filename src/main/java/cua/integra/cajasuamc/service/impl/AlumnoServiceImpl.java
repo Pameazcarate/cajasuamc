@@ -44,7 +44,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public AlumnoDTO getAlumnoByMatricula(int matricula){
+    public AlumnoDTO getAlumnoByMatricula(long matricula){
         Alumno alumno = alumnoRepository.findByMatricula(matricula);
         if (alumno != null) {
             return convertToDTO(alumno);
@@ -53,7 +53,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public AlumnoDTO updateAlumno(int matricula, AlumnoDTO alumnoDTO){
+    public AlumnoDTO updateAlumno(long matricula, AlumnoDTO alumnoDTO){
         Alumno alumnnoE = alumnoRepository.findByMatricula(matricula);
         if (alumnnoE != null) {
             alumnnoE.setNombre(alumnoDTO.getNombre());

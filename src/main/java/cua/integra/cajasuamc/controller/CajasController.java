@@ -28,7 +28,7 @@ public class CajasController{
     }
 
     @GetMapping("/caja/{id}")
-    public ResponseEntity<CajasDTO> getCajasById(@PathVariable int id) {
+    public ResponseEntity<CajasDTO> getCajasById(@PathVariable long id) {
         CajasDTO cajasDTO = cajaService.getCajasById(id);
         if (cajasDTO != null) {
             return ResponseEntity.ok(cajasDTO);
@@ -38,7 +38,7 @@ public class CajasController{
 
 
     @PutMapping("caja/{id}")
-    public ResponseEntity<CajasDTO> updateCaja(@PathVariable int id, @RequestBody CajasDTO cajasDTO) {
+    public ResponseEntity<CajasDTO> updateCaja(@PathVariable long id, @RequestBody CajasDTO cajasDTO) {
         CajasDTO updateCaja = cajaService.updateCaja(id, cajasDTO);
         if (updateCaja != null) {
             return ResponseEntity.ok(updateCaja);

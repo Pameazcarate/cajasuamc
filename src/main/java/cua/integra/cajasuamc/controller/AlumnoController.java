@@ -34,7 +34,7 @@ public class AlumnoController {
     }
 
     @GetMapping("/alumnos/{matricula}")
-    public ResponseEntity<AlumnoDTO> findAlumnoByMatricula(@PathVariable int matricula) {
+    public ResponseEntity<AlumnoDTO> findAlumnoByMatricula(@PathVariable long matricula) {
         AlumnoDTO alumno = alumnoService.getAlumnoByMatricula(matricula);
         if (alumno != null) {
             return new ResponseEntity<>(alumno, HttpStatus.OK);
@@ -43,7 +43,7 @@ public class AlumnoController {
     }
 
     @PutMapping("/alumnos/{matricula}")
-    public ResponseEntity<AlumnoDTO> updateAlumno(@PathVariable int matricula, @RequestBody AlumnoDTO alumnoDTO) {
+    public ResponseEntity<AlumnoDTO> updateAlumno(@PathVariable long matricula, @RequestBody AlumnoDTO alumnoDTO) {
         AlumnoDTO updatedAlumno = alumnoService.updateAlumno(matricula, alumnoDTO);
         if (updatedAlumno != null) {
             return new ResponseEntity<>(updatedAlumno, HttpStatus.OK);
