@@ -1,7 +1,7 @@
 package cua.integra.cajasuamc.service.impl;
 
 import cua.integra.cajasuamc.dto.EmpleadoDTO;
-import cua.integra.cajasuamc.entities.Empleado;
+import cua.integra.cajasuamc.entity.Empleado;
 import cua.integra.cajasuamc.repository.EmpleadoRepository;
 import cua.integra.cajasuamc.service.EmpleadoService;
 import org.springframework.stereotype.Service;

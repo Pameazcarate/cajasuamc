@@ -1,7 +1,7 @@
 package cua.integra.cajasuamc.service.impl;
 
 import cua.integra.cajasuamc.dto.ServicioDTO;
-import cua.integra.cajasuamc.entities.Servicio;
+import cua.integra.cajasuamc.entity.Servicio;
 import cua.integra.cajasuamc.repository.ServicioRepository;
 import cua.integra.cajasuamc.service.ServicioService;
 
