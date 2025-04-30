@@ -21,7 +21,7 @@ public class EmpleadoDTO {
     @Column(nullable = false)
     private String apellidos;
     @Column(nullable = false)
-    private int telefono;
+    private String telefono;
 
     public long getNumeroEmpleado() {
         return numeroEmpleado;
@@ -47,11 +47,11 @@ public class EmpleadoDTO {
         this.apellidos = apellidos;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 }

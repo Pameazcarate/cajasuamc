@@ -17,7 +17,7 @@ import java.util.List;
 public class Servicio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idServicio;
+    private Long idServicio;
     @Column(nullable = false)
     private String nombreServicio;
     @Column(nullable = false)
@@ -27,8 +27,4 @@ public class Servicio {
     @ToString.Exclude
     private List<Pago> pagos;
 
-
-    public Servicio orElse(Object o) {
-        return null;
-    }
 }

@@ -12,7 +12,7 @@ import lombok.*;
 public class ServicioDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idServicio;
+    private Long idServicio;
     @Column(nullable = false)
     private String nombreServicio;
     @Column(nullable = false)
