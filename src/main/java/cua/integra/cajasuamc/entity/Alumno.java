@@ -1,4 +1,4 @@
-package cua.integra.cajasuamc.entities;
+package cua.integra.cajasuamc.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
