@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -26,5 +25,4 @@ import java.util.List;
         @ManyToOne
         @JoinColumn(name = "caja_id")
         private Caja caja;
-     }
-
+        }
