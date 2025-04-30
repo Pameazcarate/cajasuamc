@@ -27,11 +27,11 @@ public class Servicio {
     @ToString.Exclude
     private List<Pago> pagos;
 
-    public long getIdServicio() {
+    public Long getIdServicio() {
         return idServicio;
     }
 
-    public void setIdServicio(long idServicio) {
+    public void setIdServicio(Long idServicio) {
         this.idServicio = idServicio;
     }
 
@@ -43,7 +43,7 @@ public class Servicio {
         this.nombreServicio = nombreServicio;
     }
 
-    public String getCosto() {
+    public int getCosto() {
         return costo;
     }
 
