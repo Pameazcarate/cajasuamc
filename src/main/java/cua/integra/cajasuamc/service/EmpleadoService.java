@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-
-@Service
 public interface EmpleadoService {
     EmpleadoDTO createEmpleado(EmpleadoDTO empleadoDTO);
     List<EmpleadoDTO> getAllEmpleados();
