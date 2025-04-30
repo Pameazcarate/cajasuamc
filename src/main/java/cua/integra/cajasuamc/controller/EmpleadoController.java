@@ -13,14 +13,14 @@ import java.util.List;
 public class EmpleadoController {
     private final EmpleadoService empleadoService;
 
-    public EmpleadoController(EmpleadoService alumnoService) {
-        this.empleadoService = alumnoService;
+    public EmpleadoController(EmpleadoService empleadoService) {
+        this.empleadoService = empleadoService;
     }
 
     @PostMapping("/empleados")
     public ResponseEntity<EmpleadoDTO> createEmpleado(@RequestBody EmpleadoDTO empleadoDTO) {
-        EmpleadoDTO createdAlumno = empleadoService.createEmpleado(empleadoDTO);
-        return new ResponseEntity<>(createdAlumno, HttpStatus.CREATED);
+        EmpleadoDTO createdEmpleado = empleadoService.createEmpleado(empleadoDTO);
+        return new ResponseEntity<>(createdEmpleado, HttpStatus.CREATED);
     }
 
     @GetMapping("/empleados")

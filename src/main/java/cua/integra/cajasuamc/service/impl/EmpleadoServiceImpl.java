@@ -33,7 +33,7 @@ public abstract class EmpleadoServiceImpl implements EmpleadoService {
     }
 
     @Override
-    public List<EmpleadoDTO> getAllAlumnos() {
+    public List<EmpleadoDTO> getAllEmpleados() {
         List<Empleado> empleados = empleadoRepository.findAll();
         return empleados.stream()
                 .map(this::convertToDTO)

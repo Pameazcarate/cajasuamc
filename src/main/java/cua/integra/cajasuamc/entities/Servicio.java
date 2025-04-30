@@ -1,28 +1,31 @@
-package cua.integra.cajasuamc.dto;
+package cua.integra.cajasuamc.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Table(name="servicio")
+@Table(name = "servicios")
 @Setter
 @Getter
 @NoArgsConstructor
 @ToString
-public class ServicioDTO {
+public class Servicio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idServicio;
+    private long idServicio;
     @Column(nullable = false)
     private String nombreServicio;
     @Column(nullable = false)
-    private int costo;
+    private String costo;
 
-    public int getIdServicio() {
+    public long getIdServicio() {
         return idServicio;
     }
 
-    public void setIdServicio(int idServicio) {
+    public void setIdServicio(long idServicio) {
         this.idServicio = idServicio;
     }
 
@@ -38,7 +41,7 @@ public class ServicioDTO {
         return costo;
     }
 
-    public void setCosto(int costo) {
+    public void setCosto(String costo) {
         this.costo = costo;
     }
 }

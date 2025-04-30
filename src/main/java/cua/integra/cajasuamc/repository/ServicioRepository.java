@@ -1,9 +1,10 @@
 package cua.integra.cajasuamc.repository;
 
-import cua.integra.cajasuamc.entities.Empleado;
+import cua.integra.cajasuamc.entities.Servicio;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ServicioRepository extends JpaRepository<Empleado, Long> {
+public interface ServicioRepository extends JpaRepository<Servicio, Long> {
+    Servicio findByIdServicio(long idServicio);
 }
