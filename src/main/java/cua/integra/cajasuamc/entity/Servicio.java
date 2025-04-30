@@ -21,7 +21,7 @@ public class Servicio {
     @Column(nullable = false)
     private String nombreServicio;
     @Column(nullable = false)
-    private String costo;
+    private int costo;
 
     @OneToMany(mappedBy = "servicio")
     @ToString.Exclude
@@ -47,7 +47,7 @@ public class Servicio {
         return costo;
     }
 
-    public void setCosto(String costo) {
+    public void setCosto(int costo) {
         this.costo = costo;
     }
 
