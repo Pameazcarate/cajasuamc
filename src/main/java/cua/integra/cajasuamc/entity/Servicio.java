@@ -51,5 +51,7 @@ public class Servicio {
         this.costo = costo;
     }
 
-
+    public Servicio orElse(Object o) {
+        return null;
+    }
 }
