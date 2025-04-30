@@ -21,6 +21,10 @@ public class Servicio {
     @Column(nullable = false)
     private String costo;
 
+    @OneToMany(mappedBy = "servicio")
+    @ToString.Exclude
+    private List<Pago> pagos;
+
     public long getIdServicio() {
         return idServicio;
     }
