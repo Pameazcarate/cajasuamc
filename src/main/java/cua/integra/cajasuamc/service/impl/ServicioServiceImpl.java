@@ -21,7 +21,7 @@ public class ServicioServiceImpl implements ServicioService {
 
         servicio.setIdServicio(servicioDTO.getIdServicio());
         servicio.setNombreServicio(servicioDTO.getNombreServicio());
-        servicio.setCosto(servicioDTO.getCosto());
+        servicio.setCosto(String.valueOf(servicioDTO.getCosto()));
 
         Servicio savedServicios = servicioRepository.save(servicio);
 

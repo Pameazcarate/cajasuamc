@@ -34,7 +34,7 @@ public class ServicioDTO {
         this.nombreServicio = nombreServicio;
     }
 
-    public String getCosto() {
+    public int getCosto() {
         return costo;
     }
 
