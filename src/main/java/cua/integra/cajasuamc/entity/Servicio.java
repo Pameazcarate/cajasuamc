@@ -27,29 +27,6 @@ public class Servicio {
     @ToString.Exclude
     private List<Pago> pagos;
 
-    public long getIdServicio() {
-        return idServicio;
-    }
-
-    public void setIdServicio(long idServicio) {
-        this.idServicio = idServicio;
-    }
-
-    public String getNombreServicio() {
-        return nombreServicio;
-    }
-
-    public void setNombreServicio(String nombreServicio) {
-        this.nombreServicio = nombreServicio;
-    }
-
-    public String getCosto() {
-        return costo;
-    }
-
-    public void setCosto(int costo) {
-        this.costo = costo;
-    }
 
     public Servicio orElse(Object o) {
         return null;

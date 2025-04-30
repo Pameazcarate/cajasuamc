@@ -22,7 +22,7 @@ public class ServicioServiceImpl implements ServicioService {
 
         servicio.setIdServicio(servicioDTO.getIdServicio());
         servicio.setNombreServicio(servicioDTO.getNombreServicio());
-        servicio.setCosto(String.valueOf(servicioDTO.getCosto()));
+        servicio.setCosto(Integer.parseInt(String.valueOf(servicioDTO.getCosto())));
 
         Servicio savedServicios = servicioRepository.save(servicio);
 
@@ -53,7 +53,7 @@ public class ServicioServiceImpl implements ServicioService {
         if (servicio1 != null) {
             servicio1.setIdServicio(servicioDTO.getIdServicio());
             servicio1.setNombreServicio(servicioDTO.getNombreServicio());
-            servicio1.setCosto(String.valueOf(servicioDTO.getCosto()));
+            servicio1.setCosto(Integer.parseInt(String.valueOf(servicioDTO.getCosto())));
 
             Servicio updatedServicio = servicioRepository.save(servicio1);
             return convertToDTO(updatedServicio);
